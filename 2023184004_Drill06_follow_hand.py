@@ -8,6 +8,12 @@ char = load_image('animation_sheet.png')
 back = load_image('TUK_GROUND.png')
 
 
+#
+def Draw_hand_back(x,y):
+    clear_canvas()
+    back.draw(600, 500, 1200, 1000)
+    hand.draw(x, y)
+#
 
 #
 def Follow_hand(x, y, lastx, lasty):
@@ -18,9 +24,7 @@ def Follow_hand(x, y, lastx, lasty):
         xline = (1 - t) * lastx + t * x
         yline = (1 - t) * lasty + t * y
 
-        clear_canvas()
-        back.draw(600, 500, 1200, 1000)
-        hand.draw(x, y)
+        Draw_hand_back(x, y)
 
         if x >= lastx:
             char.clip_draw(frame * 100, 100, 100, 100, int(xline), int(yline), 100, 100)
@@ -35,7 +39,7 @@ def Follow_hand(x, y, lastx, lasty):
 
 xlast = 800 // 2
 ylast = 600 // 2
-char.clip_draw(0, 300, 100, 100, 400, 300, 100, 100)
+
 delay(0.1)
 
 while True:
@@ -43,6 +47,14 @@ while True:
     y = random.randint(26,584)
 
     Follow_hand(x, y, xlast, ylast)
+
+    Draw_hand_back(x, y)
+    if x>= xlast:
+        char.clip_draw(0,300, 100,100, x,y, 100,100)
+    elif x < xlast:
+        char.clip_draw(0,200, 100,100, x,y, 100,100)
+    update_canvas()
+    delay(0.6)
 
     xlast = x
     ylast = y
