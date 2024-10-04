@@ -1,4 +1,5 @@
 from pico2d import*
+import random
 
 open_canvas()
 hand = load_image('hand_arrow.png')
@@ -9,10 +10,11 @@ back = load_image('TUK_GROUND.png')
 def hand_to_rand():
     print("handrand")
     clear_canvas()
-    back.draw(0,0)
 
-    char.draw(400, 300)
-    delay(0.1)
+#    back.draw(600,500,1200,1000)
+    hand.draw(random.randint(25,785), random.randint(26,584))
+    delay(0.5)
+
     update_canvas()
 
 
@@ -25,6 +27,8 @@ def hand_to_rand():
 def Follow_hand():
     print("follow")
     pass
+
+
 
 
 
