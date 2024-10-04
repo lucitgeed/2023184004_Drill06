@@ -1,9 +1,9 @@
 from pico2d import*
 
 open_canvas()
-hand = load_image('hand_arrow')
-char = load_image("animation_sheet")
-back = load_image('TUK_GROUND')
+hand = load_image('hand_arrow.png')
+char = load_image("animation_sheet.png")
+back = load_image('TUK_GROUND.png')
 
 
 def hand_to_rand():
@@ -13,6 +13,7 @@ def hand_to_rand():
 
     char.draw(400, 300)
     delay(0.1)
+    update_canvas()
 
 
     #손은 이동과정이 보이지 않음.
