@@ -24,7 +24,7 @@ def Follow_hand():
 
  #   back.draw(600, 500, 1200, 1000)
     print("follow")
-    char.clip_draw(0, 0, 100, 100, 800//2, 600//2)
+    char.clip_draw(0, 300, 100, 100, 800//2, 600//2)
 
     #캐릭터(정자세)를 먼저 그리고
 
