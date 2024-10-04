@@ -9,6 +9,19 @@ back = load_image('TUK_GROUND.png')
 
 
 #
+def absolute(a, b, c, d):
+    abs = a - b
+    abs2 = c - d
+
+    if abs < 0:
+        abs = -abs
+    if abs2 < 0:
+        abs2 = -abs2
+
+    return abs + abs2
+#
+
+#
 def Draw_hand_back(x,y):
     clear_canvas()
     back.draw(600, 500, 1200, 1000)
@@ -17,9 +30,17 @@ def Draw_hand_back(x,y):
 
 #
 def Follow_hand(x, y, lastx, lasty):
-
+#
+    how_far = absolute(x, lastx, y, lasty)
+    if how_far >= 200:
+        speed = 2
+    elif 200 > how_far >= 50:
+        speed = 4
+    elif how_far < 60:
+        speed = 5
+#
     frame = 0
-    for i in range(0, 100+1, 2):
+    for i in range(0, 100+1, speed):
         t = i / 100
         xline = (1 - t) * lastx + t * x
         yline = (1 - t) * lasty + t * y
@@ -37,11 +58,9 @@ def Follow_hand(x, y, lastx, lasty):
 #
 
 
+
 xlast = 800 // 2
 ylast = 600 // 2
-
-delay(0.1)
-
 while True:
     x = random.randint(25,785)
     y = random.randint(26,584)
