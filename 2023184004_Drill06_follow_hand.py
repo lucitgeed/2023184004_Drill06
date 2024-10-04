@@ -16,6 +16,14 @@ def hand_to_rand(x, y):
 
 
 
+
+
+
+
+
+
+
+
 #
 def Follow_hand(x, y):
     print("follow")
@@ -25,35 +33,41 @@ def Follow_hand(x, y):
     frame = 0
 
 
-    if x >= xnow:
-        for i in range(0, 100+1, 4):
-            t = i / 100
-            xline = (1 - t) * xnow + t * x
-            yline = (1 - t) * ynow + t * y
 
-            clear_canvas()
-            hand_to_rand(x, y)
+    for i in range(0, 100+1):
+        t = i / 100
+        xline = (1 - t) * xnow + t * x
+        yline = (1 - t) * ynow + t * y
+        print("thisis t, linex liney")
+
+        print(t)
+        print(xline)
+        print(yline)
+
+        #clear_canvas()
+
+        hand_to_rand(x, y)
+        print("draw hand")
+
+        if x >= xnow:
             char.clip_draw(frame * 100, 100, 100, 100, int(xline), int(yline), 100, 100)
-            frame = frame + 1
-            update_canvas()
-            delay(0.1)
-
-        char.clip_draw(0, 300, 100, 100, x, y)
-
-
-    elif x < xnow:
-        for i in range(0, 100+1, 4):
-            t = i / 100
-            xline = (1 - t) * xnow + t * x
-            yline = (1 - t) * ynow + t * y
-
-            clear_canvas()
+            print("clipdraw rignt")
+        elif x < xnow:
             char.clip_composite_draw(frame * 100, 100, 100, 100, 0, 'h', int(xline), int(yline), 100, 100)
-            frame = frame + 1
-            update_canvas()
-            delay(0.1)
+            print("clipdraw left")
 
-        char.clip_composite_draw(0, 300, 100, 100, 0, 'h', x, y)
+
+        frame = (frame + 1) % 8
+        print("frame +  1")
+
+        delay(0.1)
+
+        update_canvas()
+        print("update canvas")
+
+     #   char.clip_draw(0, 300, 100, 100, x, y)
+    #char.clip_composite_draw(0, 300, 100, 100, 0, 'h', x, y)
+    #    update_canvas()
 
 
 
